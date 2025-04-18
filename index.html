@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bijaya Adhikari | Full-Stack Developer</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <nav>
+        <a href="#" class="logo"><span>BJ</span></a>
+        <ul class="nav-links">
+          <li><a href="#about">About</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <label class="theme-switch">
+            <input type="checkbox" id="theme-toggle">
+            <span class="slider"></span>
+          </label>
+        </ul>
+        <div class="burger">
+          <div class="line1"></div>
+          <div class="line2"></div>
+          <div class="line3"></div>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <h1>Hi, I'm <span style="color: var(--accent);">Bijaya Adhikari</span></h1>
+        <p>Full-Stack Developer passionate about creating elegant, efficient, and user-friendly web applications.</p>
+        <a href="#contact" class="btn">Hire Me</a>
+        <a href="#projects" class="btn btn-outline">View My Work</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about">
+    <div class="container">
+      <h2 class="section-title">About Me</h2>
+      <div class="about-content">
+        <div class="about-text">
+          <p>I am a Full-Stack Developer with expertise in building modern web applications from front to back. With a strong foundation in both client and server-side technologies, I create scalable, responsive, and intuitive digital experiences.</p>
+          <p>My approach combines technical excellence with creative problem-solving to deliver solutions that not only meet but exceed expectations. I believe in clean code, continuous learning, and staying updated with the latest industry trends.</p>
+        </div>
+        <div class="about-image">
+          <img src="./img/bj.png" alt="Bijaya Adhikari">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills" class="skills">
+    <div class="container">
+      <h2 class="section-title">My Skills</h2>
+      <div class="skills-container">
+        <div class="skill-card">
+          <i>🖥️</i>
+          <h3>Frontend Development</h3>
+          <p>HTML5, CSS3, JavaScript, React, Vue.js, Redux, Tailwind CSS, Bootstrap, Responsive Design</p>
+        </div>
+        <div class="skill-card">
+          <i>⚙️</i>
+          <h3>Backend Development</h3>
+          <p>Node.js, Express, Python, Django, RESTful APIs, GraphQL, MongoDB, PostgreSQL, MySQL</p>
+        </div>
+        <div class="skill-card">
+          <i>🚀</i>
+          <h3>DevOps & Tools</h3>
+          <p>Git, Docker, AWS, CI/CD, Jest, Mocha, Webpack, npm, Agile Methodologies</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects">
+    <div class="container">
+      <h2 class="section-title">My Projects</h2>
+      <div class="projects-grid">
+        <div class="project-card">
+          <div class="project-image">
+            <img src="./img/nodejs.svg" alt="E-commerce Platform">
+          </div>
+          <div class="project-content">
+            <h3>E-commerce Platform</h3>
+            <div class="project-tags">
+              <span class="tag">React</span>
+              <span class="tag">Node.js</span>
+              <span class="tag">MongoDB</span>
+              <span class="tag">Redux</span>
+            </div>
+            <p>A full-featured e-commerce platform with user authentication, product management, cart functionality, and payment integration.</p>
+            <a href="#" class="btn">View Project</a>
+          </div>
+        </div>
+        <div class="project-card">
+          <div class="project-image">
+            <img src="./img/nodejs.svg" alt="Task Management App">
+          </div>
+          <div class="project-content">
+            <h3>Task Management App</h3>
+            <div class="project-tags">
+              <span class="tag">React</span>
+              <span class="tag">NextJS</span>
+              <span class="tag">PostgreSQL</span>
+            </div>
+            <p>A collaborative task management application with real-time updates, team workspaces, and progress tracking.</p>
+            <a href="#" class="btn">View Project</a>
+          </div>
+        </div>
+        <div class="project-card">
+          <div class="project-image">
+            <img src="./img/nodejs.svg" alt="Weather Dashboard">
+          </div>
+          <div class="project-content">
+            <h3>Weather Dashboard</h3>
+            <div class="project-tags">
+              <span class="tag">JavaScript</span>
+              <span class="tag">API Integration</span>
+              <span class="tag">Chart.js</span>
+            </div>
+            <p>An interactive weather dashboard providing real-time weather data, forecasts, and historical weather patterns.</p>
+            <a href="#" class="btn">View Project</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="contact">
+    <div class="container">
+      <h2 class="section-title">Get In Touch</h2>
+      <div class="contact-content">
+        <div class="contact-info">
+          <h3>Contact Information</h3>
+          <div class="contact-details">
+            <p><i>📧</i> bijaya.adhikari@example.com</p>
+            <p><i>📱</i> +1 (555) 123-4567</p>
+            <p><i>📍</i> New York, NY</p>
+          </div>
+          <h3>Follow Me</h3>
+          <div class="social-links">
+            <a href="#"><i>𝕏</i></a>
+            <a href="#"><i>in</i></a>
+            <a href="#"><i>𝐆</i></a>
+            <a href="#"><i>𝐟</i></a>
+          </div>
+        </div>
+        <div class="contact-form">
+          <form id="contactForm">
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" id="name" required>
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" required>
+            </div>
+            <div class="form-group">
+              <label for="subject">Subject</label>
+              <input type="text" id="subject" required>
+            </div>
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea id="message" required></textarea>
+            </div>
+            <button type="submit" class="btn">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 Bijaya Adhikari. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <a href="#" class="back-to-top" id="backToTop">↑</a>
+
+  <script src="./script.js"></script>
+</body>
+</html>
