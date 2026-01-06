@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +9,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
   <link rel="stylesheet" href="./style.css">
 </head>
+
 <body>
   <!-- Header -->
   <header>
@@ -51,11 +53,15 @@
       <h2 class="section-title">About Me</h2>
       <div class="about-content">
         <div class="about-text">
-          <p>I am a Full-Stack Developer with expertise in building modern web applications from front to back. With a strong foundation in both client and server-side technologies, I create scalable, responsive, and intuitive digital experiences.</p>
-          <p>My approach combines technical excellence with creative problem-solving to deliver solutions that not only meet but exceed expectations. I believe in clean code, continuous learning, and staying updated with the latest industry trends.</p>
+          <p>I am a Full-Stack Developer with expertise in building modern web applications from front to back. With a
+            strong foundation in both client and server-side technologies, I create scalable, responsive, and intuitive
+            digital experiences.</p>
+          <p>My approach combines technical excellence with creative problem-solving to deliver solutions that not only
+            meet but exceed expectations. I believe in clean code, continuous learning, and staying updated with the
+            latest industry trends.</p>
         </div>
         <div class="about-image">
-          <img src="./bj.png" alt="Bijaya Adhikari">
+          <img src="./images/bijaya.png" alt="Bijaya Adhikari">
         </div>
       </div>
     </div>
@@ -65,21 +71,33 @@
   <section id="skills" class="skills">
     <div class="container">
       <h2 class="section-title">My Skills</h2>
-      <div class="skills-container">
-        <div class="skill-card">
-          <i>🖥️</i>
-          <h3>Frontend Development</h3>
-          <p>HTML5, CSS3, JavaScript, React, Vue.js, Redux, Tailwind CSS, Bootstrap, Responsive Design</p>
-        </div>
-        <div class="skill-card">
-          <i>⚙️</i>
-          <h3>Backend Development</h3>
-          <p>Node.js, Express, Python, Django, RESTful APIs, GraphQL, MongoDB, PostgreSQL, MySQL</p>
-        </div>
-        <div class="skill-card">
-          <i>🚀</i>
-          <h3>DevOps & Tools</h3>
-          <p>Git, Docker, AWS, CI/CD, Jest, Mocha, Webpack, npm, Agile Methodologies</p>
+      <div class="all-skills-container">
+        <div class="skill-tags">
+          <span class="skill-tag">HTML/CSS</span>
+          <span class="skill-tag">JavaScript</span>
+          <span class="skill-tag">ReactJS</span>
+          <span class="skill-tag">NextJS</span>
+          <span class="skill-tag">Zod/TanstackQuery</span>
+          <span class="skill-tag">Tailwind CSS</span>
+          <span class="skill-tag">Bootstrap</span>
+          <span class="skill-tag">Responsive Design</span>
+          <span class="skill-tag">Node.js</span>
+          <span class="skill-tag">Express</span>
+          <span class="skill-tag">Python</span>
+          <span class="skill-tag">FastAPI</span>
+          <span class="skill-tag">RESTful APIs</span>
+          <span class="skill-tag">Supabase</span>
+          <span class="skill-tag">MongoDB</span>
+          <span class="skill-tag">PostgreSQL</span>
+          <span class="skill-tag">MySQL</span>
+          <span class="skill-tag">Git</span>
+          <span class="skill-tag">Docker</span>
+          <span class="skill-tag">AWS</span>
+          <span class="skill-tag">CI/CD</span>
+          <span class="skill-tag">Linux</span>
+          <span class="skill-tag">Java</span>
+          <span class="skill-tag">System Design</span>
+          <span class="skill-tag">Agile Methodologies</span>
         </div>
       </div>
     </div>
@@ -92,7 +110,10 @@
       <div class="projects-grid">
         <div class="project-card">
           <div class="project-image">
-            <img src="./nodejs.svg" alt="E-commerce Platform">
+            <div class="slider-wrapper">
+              <img src="./images/ecom/ecom1.png" alt="E-commerce Platform" class="active">
+              <img src="./images/ecom/ecom2.png" alt="E-commerce Platform Slide 2">
+            </div>
           </div>
           <div class="project-content">
             <h3>E-commerce Platform</h3>
@@ -100,15 +121,19 @@
               <span class="tag">React</span>
               <span class="tag">Node.js</span>
               <span class="tag">MongoDB</span>
-              <span class="tag">Redux</span>
+              <span class="tag">Clerk</span>
             </div>
-            <p>A full-featured e-commerce platform with user authentication, product management, cart functionality, and payment integration.</p>
-            <a href="#" class="btn">View Project</a>
+            <p>A full-featured e-commerce platform with user authentication, product management, cart functionality, and
+              admin dashboard.</p>
+            <a href="https://ecomm-5xbtn.sevalla.app/" class="btn">View Project</a>
           </div>
         </div>
         <div class="project-card">
           <div class="project-image">
-            <img src="./nodejs.svg" alt="Task Management App">
+            <div class="slider-wrapper">
+              <img src="./images/nodejs.svg" alt="Task Management App" class="active">
+              <img src="./images/nodejs.svg" alt="Task Management App Slide 2">
+            </div>
           </div>
           <div class="project-content">
             <h3>Task Management App</h3>
@@ -117,13 +142,17 @@
               <span class="tag">NextJS</span>
               <span class="tag">PostgreSQL</span>
             </div>
-            <p>A collaborative task management application with real-time updates, team workspaces, and progress tracking.</p>
+            <p>A collaborative task management application with real-time updates, team workspaces, and progress
+              tracking.</p>
             <a href="#" class="btn">View Project</a>
           </div>
         </div>
         <div class="project-card">
           <div class="project-image">
-            <img src="./nodejs.svg" alt="Weather Dashboard">
+            <div class="slider-wrapper">
+              <img src="./images/nodejs.svg" alt="Weather Dashboard" class="active">
+              <img src="./images/nodejs.svg" alt="Weather Dashboard Slide 2">
+            </div>
           </div>
           <div class="project-content">
             <h3>Weather Dashboard</h3>
@@ -132,7 +161,8 @@
               <span class="tag">API Integration</span>
               <span class="tag">Chart.js</span>
             </div>
-            <p>An interactive weather dashboard providing real-time weather data, forecasts, and historical weather patterns.</p>
+            <p>An interactive weather dashboard providing real-time weather data, forecasts, and historical weather
+              patterns.</p>
             <a href="#" class="btn">View Project</a>
           </div>
         </div>
@@ -148,13 +178,12 @@
         <div class="contact-info">
           <h3>Contact Information</h3>
           <div class="contact-details">
-            <p><i>📧</i> bijaya.adhikari@example.com</p>
-            <p><i>📱</i> +1 (555) 123-4567</p>
-            <p><i>📍</i> New York, NY</p>
+            <p><i>📧</i> bijayadhikari107@gmail.com</p>
+            <p><i>📱</i> +61 424428959</p>
+            <p><i>📍</i> Canberra, ACT</p>
           </div>
           <h3>Follow Me</h3>
           <div class="social-links">
-            <a href="#"><i>𝕏</i></a>
             <a href="#"><i>in</i></a>
             <a href="#"><i>𝐆</i></a>
             <a href="#"><i>𝐟</i></a>
@@ -196,4 +225,5 @@
 
   <script src="./script.js"></script>
 </body>
+
 </html>
