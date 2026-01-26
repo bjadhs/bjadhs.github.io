@@ -66,6 +66,7 @@ h3 {
 
 p {
   font-size: 0.8rem;
+  font-style: italic;
 }
 
 .container {
@@ -179,7 +180,6 @@ nav {
 
 .hero h1 {
   font-size: 4rem;
-  /* Larger, impactful heading */
   font-weight: 700;
   margin-bottom: 1.5rem;
   line-height: 1.1;
@@ -188,14 +188,14 @@ nav {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   color: var(--primary);
-  /* Fallback */
 }
 
 .hero p {
   font-size: 1.25rem;
   line-height: 1.6;
   margin-bottom: 2.5rem;
-  max-width: 600px;
+  max-width: 800px;
+  text-align: center;
   color: var(--text);
   opacity: 0.9;
 }
@@ -215,7 +215,7 @@ nav {
 }
 
 .btn:hover {
-  background-color: #c0392b;
+  background-color: var(--primary);
   transform: translateY(-3px);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
