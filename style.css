@@ -7,9 +7,7 @@
   --bg: #f8fafc;
   --text: #1e293b;
   --primary: #1e40af;
-  /* Deep Blue */
   --accent: #7c3aed;
-  /* Elegant Purple */
   --card-bg: #ffffff;
   --nav-bg: rgba(255, 255, 255, 0.8);
   --border-color: rgba(0, 0, 0, 0.1);
@@ -23,7 +21,6 @@
 
 body {
   font-family: 'Inter', sans-serif;
-  /* Body font update */
   color: var(--text);
   background-color: var(--bg);
   line-height: 1.6;
@@ -156,7 +153,6 @@ nav {
   background-color: var(--bg);
   color: var(--text);
   overflow: hidden;
-  /* Mesh gradient background effect */
   background-image:
     radial-gradient(circle at 10% 20%, rgba(30, 64, 175, 0.1) 0%, transparent 20%),
     radial-gradient(circle at 90% 80%, rgba(124, 58, 237, 0.1) 0%, transparent 20%);
@@ -240,7 +236,6 @@ section {
 .section-title {
   text-align: center;
   font-size: 3rem;
-  /* Larger section titles */
   margin-bottom: 4rem;
   position: relative;
   font-weight: 700;
@@ -260,98 +255,151 @@ section {
 
 .about-content {
   position: relative;
-  overflow: hidden;
-  border-radius: 20px;
-  display: block;
-  min-height: 600px;
-  /* Ensure space for the image */
-  background-color: transparent;
-}
-
-.about-text {
-  font-size: 2rem;
-  line-height: 1.8;
-  position: relative;
-  z-index: 2;
-  padding: 3rem;
-  color: var(--text);
-  /* Dark text on light side, overridden in dark mode */
-  width: 50%;
-  margin-left: auto;
-  /* Push text to the right */
-  opacity: 0;
-  transform: translateX(50px);
-  /* Gradient background for text legibility on merge */
-  background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.9) 20%, rgba(255, 255, 255, 1) 100%);
-  height: 100%;
+  height: 600px;
   display: flex;
-  flex-direction: column;
+  align-items: center;
   justify-content: center;
 }
 
 .about-image {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 60%;
-  /* Image takes up left side */
-  height: 80%;
+  top: 60%;
+  left: 47%;
+  transform: translate(-50%, -50%);
   z-index: 1;
   opacity: 0;
-  transform: translateX(-50px);
-  transition: all 0.5s ease;
+}
+
+.image-wrapper {
+  position: relative;
+  width: 420px;
+  height: 420px;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.25);
+  transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.image-wrapper:hover {
+  transform: scale(1.08);
 }
 
 .about-image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: top center;
-  /* Focus on face */
-  filter: none;
-  /* No blur requested for this version ("Make it big") */
-  box-shadow: none;
-  transform: none;
-  border-radius: 0;
+  object-position: center;
+  display: block;
+}
+
+.about-text-top {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  width: 35%;
+  opacity: 0;
+  transform: translateY(-30px);
+  z-index: 2;
+}
+
+.about-text-bottom {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  width: 35%;
+  opacity: 0;
+  transform: translateY(30px);
+  z-index: 2;
+}
+
+.about-text-top p,
+.about-text-bottom p {
+  font-size: 0.75rem;
+  line-height: 1.5;
+  color: var(--text);
+  font-style: normal;
+  background: rgba(255, 255, 255, 0.65);
+  padding: 1rem 1.2rem;
+  border-radius: 12px;
+  backdrop-filter: blur(20px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 /* Dark Mode Overrides */
-body.dark-theme .about-text {
+body.dark-theme .about-text-top p,
+body.dark-theme .about-text-bottom p {
+  background: rgba(30, 41, 59, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   color: #f5f5f5;
-  background: linear-gradient(to right, rgba(18, 18, 18, 0) 0%, rgba(18, 18, 18, 0.9) 20%, rgba(18, 18, 18, 1) 100%);
-}
-
-body.dark-theme .about-image {
-  opacity: 1 !important;
-  /* Fully visible */
-  transform: none !important;
 }
 
 body.dark-theme .about-image img {
-  filter: grayscale(20%);
-  /* Slight desaturation for elegance, not full blur */
+  filter: brightness(1.05);
 }
 
 /* Mobile Responsive for About */
+@media screen and (max-width: 1024px) {
+  .about-content {
+    height: 700px;
+  }
+
+  .image-wrapper {
+    width: 350px;
+    height: 350px;
+  }
+
+  .about-text-top,
+  .about-text-bottom {
+    width: 38%;
+  }
+
+  .about-text-top p,
+  .about-text-bottom p {
+    font-size: 0.7rem;
+    padding: 0.8rem 1rem;
+  }
+}
+
 @media screen and (max-width: 768px) {
   .about-content {
-    min-height: auto;
+    height: auto;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 2rem 0;
   }
 
   .about-image {
     position: relative;
-    width: 100%;
-    height: 300px;
     transform: none !important;
+    top: auto;
+    left: auto;
     opacity: 1 !important;
   }
 
-  .about-text {
-    width: 100%;
-    margin-left: 0;
-    background: var(--bg);
-    /* Solid bg on mobile */
-    padding: 2rem;
+  .image-wrapper {
+    width: 280px;
+    height: 280px;
+    margin: 0 auto;
+  }
+
+  .about-text-top,
+  .about-text-bottom {
+    position: relative;
+    width: 100% !important;
+    top: auto !important;
+    bottom: auto !important;
+    left: auto !important;
+    right: auto !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .about-text-top p,
+  .about-text-bottom p {
+    font-size: 0.95rem;
+    padding: 1.5rem;
+    background: var(--card-bg);
   }
 }
 
@@ -430,7 +478,6 @@ body.dark-theme .skill-tag:hover {
   color: white;
 }
 
-/* Zigzag effect for even/odd tags */
 .skill-tag:nth-child(odd) {
   transform: translateY(-5px);
 }

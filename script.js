@@ -135,23 +135,33 @@ const initGSAPAnimations = () => {
   // About Section Animation
   gsap.registerPlugin(ScrollTrigger);
 
-  gsap.to('.about-text', {
+  gsap.to('.about-text-top', {
     scrollTrigger: {
-      trigger: '.about-text',
+      trigger: '.about-content',
       start: 'top 80%'
     },
     opacity: 1,
-    x: 0,
+    y: 0,
     duration: 0.8
+  });
+
+  gsap.to('.about-text-bottom', {
+    scrollTrigger: {
+      trigger: '.about-content',
+      start: 'top 80%'
+    },
+    opacity: 1,
+    y: 0,
+    duration: 0.8,
+    delay: 0.2
   });
 
   gsap.to('.about-image', {
     scrollTrigger: {
-      trigger: '.about-image',
+      trigger: '.about-content',
       start: 'top 80%'
     },
     opacity: 1,
-    x: 0,
     duration: 0.8
   });
 
