@@ -1,62 +1,31 @@
-# Bijaya Adhikari - Portfolio Website
+# My Portfolio
 
-A modern, responsive portfolio website showcasing my work as a Full-Stack Developer.
+A simple personal portfolio site I built to showcase my work. Nothing fancy — just clean HTML, CSS, and a bit of JavaScript.
 
-## ✨ Features
+## What's Here
 
-- **Modern Design** - Clean, professional layout with smooth animations
-- **Dark & Light Mode** - Toggle between themes (preference is saved)
-- **Fully Responsive** - Works perfectly on desktop, tablet, and mobile devices
-- **Smooth Animations** - Elegant scroll-triggered animations powered by GSAP
-- **Mobile-Friendly Navigation** - Hamburger menu for easy navigation on smaller screens
-- **Project Showcase** - Display your work with image sliders for each project
-- **Contact Form** - Easy way for visitors to get in touch
-- **No Dependencies** - Built with vanilla HTML, CSS, and JavaScript
+- **Dark & light mode** — toggle switch in the header, your preference sticks around
+- **Responsive layout** — works on phones, tablets, desktops
+- **Smooth scroll animations** — powered by GSAP
+- **Project image sliders** — auto-rotating screenshots for each project
+- **Contact form** — ready to wire up to a backend
+- **Mobile menu** — hamburger that actually closes when you tap a link
 
-## 🚀 Quick Start
+## File Structure
 
-### View the Portfolio
+```
+index.html    # All the content
+style.css     # Styling + theme variables
+script.js     # Menu, dark mode, animations
+images/       # Project screenshots and profile pic
+```
 
-Simply open `index.html` in your web browser, or visit the live site at [bjadhs.github.io](https://bjadhs.github.io)
+## Quick Start
 
-**Hero Section** (First thing visitors see):
-- Edit the title and description in `index.html` under `<!-- Hero Section -->`
-- Change the buttons text or links as needed
+Open `index.html` in your browser. That's it.
 
-**About Section**:
-- Update the two paragraphs in `index.html` under `<!-- About Section -->`
-- Replace the profile image at `./images/bijaya.png`
-
-**Skills**:
-- Edit the skill tags in `index.html` under `<!-- Skills Section -->`
-- Add or remove skills by duplicating `<span class="skill-tag">Skill Name</span>`
-
-**Projects**:
-- Add new projects by duplicating a `.project-card` block
-- Update project title, description, technology tags, and links
-- Replace project images in the `./images/` folder
-
-**Contact Section**:
-- Update your email, phone, and location in `index.html`
-- Update social media links
-
-
-## 🎨 How It Works
-
-- **HTML** - Semantic structure with sections for hero, about, skills, projects, and contact
-- **CSS** - Responsive grid/flex layouts with CSS variables for easy theming
-- **JavaScript** - Handles mobile menu, smooth scrolling, dark mode toggle, and animations
-- **Animations** - Uses GSAP library for scroll-triggered effects
-
-- Theme preference (dark/light mode) is automatically saved
-- The contact form shows an alert on submit (you can integrate a backend service if needed)
-- Project images automatically rotate every 3 seconds
-- Mobile menu closes when you click a link
-- Header changes style when you scroll down
-
-
-This portfolio is personal work. Feel free to use it as inspiration for your own portfolio.
+Or view it live at [bjadhs.github.io](https://bjadhs.github.io)
 
 ---
 
-Built with vanilla HTML, CSS, and JavaScript. No frameworks, no dependencies. Simple and elegant. ✨
+Built with vanilla everything. No React, no build step, no nonsense.
