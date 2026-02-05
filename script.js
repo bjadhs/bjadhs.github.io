@@ -79,8 +79,8 @@ const contactForm = () => {
                   window.location.protocol === 'file:';
 
   const API_URL = isLocal 
-    ? 'http://localhost:5000/api/contact'
-    : 'https://backend-url.com/api/contact';
+    ? 'http://localhost:3000/api/contact'
+    : 'https://https://backend-portfolio-ivory-one.vercel.app/api/contact';
 
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
