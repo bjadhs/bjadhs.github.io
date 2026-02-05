@@ -80,7 +80,7 @@ const contactForm = () => {
 
   const API_URL = isLocal 
     ? 'http://localhost:3000/api/contact'
-    : 'https://https://backend-portfolio-ivory-one.vercel.app/api/contact';
+    : 'https://backend-portfolio-ivory-one.vercel.app/api/contact';
 
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
