@@ -6,7 +6,6 @@ A simple personal portfolio site I built to showcase my work. Nothing fancy — 
 
 - **Dark & light mode** — toggle switch in the header, your preference sticks around
 - **Responsive layout** — works on phones, tablets, desktops
-- **Smooth scroll animations** — powered by GSAP
 - **Project image sliders** — auto-rotating screenshots for each project
 - **Contact form** — ready to wire up to a backend
 - **Mobile menu** — hamburger that actually closes when you tap a link

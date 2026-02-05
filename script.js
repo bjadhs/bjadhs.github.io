@@ -5,10 +5,7 @@ const navSlide = () => {
   const navLinks = document.querySelectorAll('.nav-links li');
 
   burger.addEventListener('click', () => {
-    // Toggle Nav
     nav.classList.toggle('nav-active');
-
-    // Animate Links
     navLinks.forEach((link, index) => {
       if (link.style.animation) {
         link.style.animation = '';
@@ -16,8 +13,6 @@ const navSlide = () => {
         link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.3}s`;
       }
     });
-
-    // Burger Animation
     burger.classList.toggle('toggle');
   });
 };
@@ -37,18 +32,13 @@ const scrollFunctions = () => {
     }
   });
 
-  // Smooth scroll for anchor links
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
       e.preventDefault();
-
       const targetId = this.getAttribute('href');
+      
       if (targetId === '#') {
-        // Scroll to top when href is "#"
-        window.scrollTo({
-          top: 0,
-          behavior: 'smooth'
-        });
+        window.scrollTo({ top: 0, behavior: 'smooth' });
         return;
       }
 
@@ -59,7 +49,6 @@ const scrollFunctions = () => {
           behavior: 'smooth'
         });
 
-        // Close mobile menu if open
         const nav = document.querySelector('.nav-links');
         const burger = document.querySelector('.burger');
         if (nav.classList.contains('nav-active')) {
@@ -73,26 +62,66 @@ const scrollFunctions = () => {
     });
   });
 
-  // Add click event for backToTop button as well
   backToTop.addEventListener('click', (e) => {
     e.preventDefault();
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 };
 
 // Contact Form
 const contactForm = () => {
   const form = document.getElementById('contactForm');
+  const submitBtn = form.querySelector('button[type="submit"]');
+  const originalBtnText = submitBtn.textContent;
+  
+  const isLocal = window.location.hostname === 'localhost' || 
+                  window.location.hostname === '127.0.0.1' ||
+                  window.location.protocol === 'file:';
 
-  form.addEventListener('submit', (e) => {
+  const API_URL = isLocal 
+    ? 'http://localhost:5000/api/contact'
+    : 'https://backend-url.com/api/contact';
+
+  form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
-    // Here you would normally send the form data to a server
-    alert('Thank you for your message! I will get back to you soon.');
-    form.reset();
+    const formData = {
+      name: document.getElementById('name').value.trim(),
+      email: document.getElementById('email').value.trim(),
+      subject: document.getElementById('subject').value.trim(),
+      message: document.getElementById('message').value.trim(),
+    };
+
+    if (!formData.name || !formData.email || !formData.subject || !formData.message) {
+      alert('Please fill in all fields.');
+      return;
+    }
+
+    submitBtn.textContent = 'Sending...';
+    submitBtn.disabled = true;
+
+    try {
+      const response = await fetch(API_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (response.ok && data.success) {
+        alert(data.message || 'Message sent successfully!');
+        form.reset();
+      } else {
+        throw new Error(data.message || 'Failed to send message.');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      alert(error.message || 'Failed to send. Email me at bijayadhikari107@gmail.com');
+    } finally {
+      submitBtn.textContent = originalBtnText;
+      submitBtn.disabled = false;
+    }
   });
 };
 
@@ -100,12 +129,8 @@ const contactForm = () => {
 const themeToggle = () => {
   const themeSwitch = document.getElementById('theme-toggle');
   const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+  const currentTheme = localStorage.getItem('theme') || (prefersDarkScheme.matches ? 'dark' : 'light');
 
-  // Check for saved theme preference or use browser preference
-  const currentTheme = localStorage.getItem('theme') ||
-    (prefersDarkScheme.matches ? 'dark' : 'light');
-
-  // Set initial theme
   if (currentTheme === 'dark') {
     document.body.classList.add('dark-theme');
     themeSwitch.checked = true;
@@ -122,96 +147,48 @@ const themeToggle = () => {
   });
 };
 
-// GSAP Animations
-const initGSAPAnimations = () => {
-  // Hero Section Animation
-  gsap.to('.hero-content', {
-    opacity: 1,
-    y: 0,
-    duration: 1,
-    delay: 0.5
-  });
+// Scroll Animations
+const initScrollAnimations = () => {
+  setTimeout(() => {
+    const heroContent = document.querySelector('.hero-content');
+    if (heroContent) heroContent.classList.add('animate-fade-in-up');
+  }, 300);
 
-  // About Section Animation
-  gsap.registerPlugin(ScrollTrigger);
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  };
 
-  gsap.to('.about-text-top', {
-    scrollTrigger: {
-      trigger: '.about-content',
-      start: 'top 80%'
-    },
-    opacity: 1,
-    y: 0,
-    duration: 0.8
-  });
-
-  gsap.to('.about-text-bottom', {
-    scrollTrigger: {
-      trigger: '.about-content',
-      start: 'top 80%'
-    },
-    opacity: 1,
-    y: 0,
-    duration: 0.8,
-    delay: 0.2
-  });
-
-  gsap.to('.about-image', {
-    scrollTrigger: {
-      trigger: '.about-content',
-      start: 'top 80%'
-    },
-    opacity: 1,
-    duration: 0.8
-  });
-
-  // Skills Cards Animation
-  gsap.utils.toArray('.skill-card').forEach((card, i) => {
-    gsap.to(card, {
-      scrollTrigger: {
-        trigger: card,
-        start: 'top 85%'
-      },
-      opacity: 1,
-      y: 0,
-      duration: 0.6,
-      delay: i * 0.2
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        if (entry.target.classList.contains('about-text-top')) {
+          entry.target.classList.add('animate-fade-in-up');
+        } else if (entry.target.classList.contains('about-text-bottom')) {
+          setTimeout(() => entry.target.classList.add('animate-fade-in-up'), 200);
+        } else if (entry.target.classList.contains('about-image')) {
+          entry.target.classList.add('animate-fade-in');
+        } else if (entry.target.classList.contains('project-card')) {
+          const cards = document.querySelectorAll('.project-card');
+          const cardIndex = Array.from(cards).indexOf(entry.target);
+          setTimeout(() => entry.target.classList.add('animate-fade-in-up'), cardIndex * 150);
+        } else if (entry.target.classList.contains('contact-info')) {
+          entry.target.classList.add('animate-fade-in-left');
+        } else if (entry.target.classList.contains('contact-form')) {
+          entry.target.classList.add('animate-fade-in-right');
+        }
+        observer.unobserve(entry.target);
+      }
     });
-  });
+  }, observerOptions);
 
-  // Projects Cards Animation
-  gsap.utils.toArray('.project-card').forEach((card, i) => {
-    gsap.to(card, {
-      scrollTrigger: {
-        trigger: card,
-        start: 'top 85%'
-      },
-      opacity: 1,
-      y: 0,
-      duration: 0.6,
-      delay: i * 0.2
-    });
-  });
+  const elementsToObserve = [
+    '.about-text-top', '.about-text-bottom', '.about-image',
+    '.project-card', '.contact-info', '.contact-form'
+  ];
 
-  // Contact Section Animation
-  gsap.to('.contact-info', {
-    scrollTrigger: {
-      trigger: '.contact-info',
-      start: 'top 80%'
-    },
-    opacity: 1,
-    x: 0,
-    duration: 0.8
-  });
-
-  gsap.to('.contact-form', {
-    scrollTrigger: {
-      trigger: '.contact-form',
-      start: 'top 80%'
-    },
-    opacity: 1,
-    x: 0,
-    duration: 0.8
+  elementsToObserve.forEach(selector => {
+    document.querySelectorAll(selector).forEach(el => observer.observe(el));
   });
 };
 
@@ -221,20 +198,14 @@ const initProjectSliders = () => {
 
   sliders.forEach(slider => {
     const images = slider.querySelectorAll('img');
-    if (images.length <= 1) return; // No need to slide if only 1 image
+    if (images.length <= 1) return;
 
     let currentIndex = 0;
-
     setInterval(() => {
-      // Remove active class from current image
       images[currentIndex].classList.remove('active');
-
-      // Calculate next index
       currentIndex = (currentIndex + 1) % images.length;
-
-      // Add active class to next image
       images[currentIndex].classList.add('active');
-    }, 3000); // 3 seconds interval
+    }, 3000);
   });
 };
 
@@ -244,6 +215,6 @@ document.addEventListener('DOMContentLoaded', () => {
   scrollFunctions();
   contactForm();
   themeToggle();
-  initGSAPAnimations();
+  initScrollAnimations();
   initProjectSliders();
 });
