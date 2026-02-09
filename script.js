@@ -1,3 +1,67 @@
+// Toast Notification System
+const Toast = {
+  container: null,
+  
+  init() {
+    this.container = document.createElement('div');
+    this.container.className = 'toast-container';
+    document.body.appendChild(this.container);
+  },
+  
+  show(message, type = 'info', duration = 5000) {
+    if (!this.container) this.init();
+    
+    const icons = {
+      success: '✓',
+      error: '✕',
+      info: 'ℹ'
+    };
+    
+    const toast = document.createElement('div');
+    toast.className = `toast ${type}`;
+    toast.innerHTML = `
+      <span class="toast-icon">${icons[type]}</span>
+      <span class="toast-message">${message}</span>
+      <button class="toast-close">&times;</button>
+    `;
+    
+    this.container.appendChild(toast);
+    
+    // Trigger animation
+    requestAnimationFrame(() => {
+      toast.classList.add('show');
+    });
+    
+    // Close button
+    const closeBtn = toast.querySelector('.toast-close');
+    closeBtn.addEventListener('click', () => this.dismiss(toast));
+    
+    // Auto dismiss
+    if (duration > 0) {
+      setTimeout(() => this.dismiss(toast), duration);
+    }
+    
+    return toast;
+  },
+  
+  dismiss(toast) {
+    toast.classList.remove('show');
+    setTimeout(() => toast.remove(), 400);
+  },
+  
+  success(message, duration) {
+    return this.show(message, 'success', duration);
+  },
+  
+  error(message, duration) {
+    return this.show(message, 'error', duration);
+  },
+  
+  info(message, duration) {
+    return this.show(message, 'info', duration);
+  }
+};
+
 // Mobile Navigation
 const navSlide = () => {
   const burger = document.querySelector('.burger');
@@ -68,11 +132,13 @@ const scrollFunctions = () => {
   });
 };
 
-// Contact Form
+// Contact Form with Validation and Toast Notifications
 const contactForm = () => {
   const form = document.getElementById('contactForm');
+  if (!form) return;
+  
   const submitBtn = form.querySelector('button[type="submit"]');
-  const originalBtnText = submitBtn.textContent;
+  const originalBtnText = submitBtn.innerHTML;
   
   const isLocal = window.location.hostname === 'localhost' || 
                   window.location.hostname === '127.0.0.1' ||
@@ -82,8 +148,84 @@ const contactForm = () => {
     ? 'http://localhost:3000/api/contact'
     : 'https://backend-portfolio-ivory-one.vercel.app/api/contact';
 
+  // Real-time validation
+  const validateField = (input) => {
+    const value = input.value.trim();
+    const fieldName = input.id;
+    let isValid = true;
+    let errorMessage = '';
+
+    // Remove existing error state
+    input.classList.remove('error');
+    const existingError = input.parentElement.querySelector('.error-message');
+    if (existingError) existingError.remove();
+
+    switch (fieldName) {
+      case 'name':
+        if (value.length < 2) {
+          isValid = false;
+          errorMessage = 'Name must be at least 2 characters';
+        } else if (!/^[a-zA-Z\s'-]+$/.test(value)) {
+          isValid = false;
+          errorMessage = 'Name can only contain letters, spaces, hyphens and apostrophes';
+        }
+        break;
+      case 'email':
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(value)) {
+          isValid = false;
+          errorMessage = 'Please enter a valid email address';
+        }
+        break;
+      case 'subject':
+        if (value.length < 3) {
+          isValid = false;
+          errorMessage = 'Subject must be at least 3 characters';
+        }
+        break;
+      case 'message':
+        if (value.length < 10) {
+          isValid = false;
+          errorMessage = 'Message must be at least 10 characters';
+        }
+        break;
+    }
+
+    if (!isValid) {
+      input.classList.add('error');
+      const errorEl = document.createElement('span');
+      errorEl.className = 'error-message show';
+      errorEl.textContent = errorMessage;
+      input.parentElement.appendChild(errorEl);
+    }
+
+    return isValid;
+  };
+
+  // Add blur validation to all inputs
+  form.querySelectorAll('input, textarea').forEach(input => {
+    input.addEventListener('blur', () => validateField(input));
+    input.addEventListener('input', () => {
+      if (input.classList.contains('error')) {
+        validateField(input);
+      }
+    });
+  });
+
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
+
+    // Validate all fields
+    const inputs = form.querySelectorAll('input, textarea');
+    let allValid = true;
+    inputs.forEach(input => {
+      if (!validateField(input)) allValid = false;
+    });
+
+    if (!allValid) {
+      Toast.error('Please fix the errors in the form', 5000);
+      return;
+    }
 
     const formData = {
       name: document.getElementById('name').value.trim(),
@@ -92,13 +234,10 @@ const contactForm = () => {
       message: document.getElementById('message').value.trim(),
     };
 
-    if (!formData.name || !formData.email || !formData.subject || !formData.message) {
-      alert('Please fill in all fields.');
-      return;
-    }
-
-    submitBtn.textContent = 'Sending...';
+    // Show loading state
     submitBtn.disabled = true;
+    submitBtn.innerHTML = '<span class="btn-loading-text">Sending...</span>';
+    submitBtn.classList.add('btn-loading');
 
     try {
       const response = await fetch(API_URL, {
@@ -111,17 +250,42 @@ const contactForm = () => {
       const data = await response.json();
 
       if (response.ok && data.success) {
-        alert(data.message || 'Message sent successfully!');
+        Toast.success(data.message || 'Message sent successfully!', 5000);
         form.reset();
+        // Clear any error states
+        inputs.forEach(input => input.classList.remove('error'));
+        document.querySelectorAll('.error-message').forEach(el => el.remove());
       } else {
+        if (data.errors && Array.isArray(data.errors)) {
+          // Show field-specific errors
+          data.errors.forEach(err => {
+            const input = document.getElementById(err.field);
+            if (input) {
+              input.classList.add('error');
+              const errorEl = document.createElement('span');
+              errorEl.className = 'error-message show';
+              errorEl.textContent = err.message;
+              input.parentElement.appendChild(errorEl);
+            }
+          });
+          throw new Error('Please fix the validation errors');
+        }
         throw new Error(data.message || 'Failed to send message.');
       }
     } catch (error) {
       console.error('Error:', error);
-      alert(error.message || 'Failed to send. Email me at bijayadhikari107@gmail.com');
+      if (error.message.includes('Failed to fetch')) {
+        Toast.error('Network error. Please check your connection and try again.', 5000);
+      } else if (error.message.includes('rate limit') || error.message.includes('Too many')) {
+        Toast.error('Too many attempts. Please try again later.', 5000);
+      } else {
+        Toast.error(error.message || 'Failed to send. Please try again.', 5000);
+      }
     } finally {
-      submitBtn.textContent = originalBtnText;
+      // Reset button state
       submitBtn.disabled = false;
+      submitBtn.innerHTML = originalBtnText;
+      submitBtn.classList.remove('btn-loading');
     }
   });
 };
@@ -212,6 +376,7 @@ const initProjectSliders = () => {
 
 // Initialize
 document.addEventListener('DOMContentLoaded', () => {
+  Toast.init();
   navSlide();
   scrollFunctions();
   contactForm();
