@@ -228,6 +228,21 @@ nav {
   color: var(--text);
 }
 
+.btn-resume {
+  background-color: var(--primary);
+  margin-left: 1rem;
+}
+
+.btn-resume:hover {
+  background-color: var(--accent);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.btn-resume i {
+  margin-right: 0.5rem;
+}
+
 /* About Section */
 section {
   padding: 1rem 0;
@@ -902,15 +917,35 @@ footer p {
   }
 
   .hero h1 {
-    font-size: 2.5rem;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .hero p {
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+    padding: 0 1rem;
+  }
+
+  .hero .btn {
+    padding: 0.6rem 1.5rem;
+    font-size: 0.9rem;
+    margin: 0.25rem;
+  }
+
+  .hero .btn-outline {
+    margin-left: 0.25rem;
   }
 
   .hero {
-    padding-top: 100px;
+    padding-top: 80px;
+    height: auto;
+    min-height: 100vh;
   }
 
   .hero-content {
     text-align: center;
+    padding: 2rem 0;
   }
 }
 

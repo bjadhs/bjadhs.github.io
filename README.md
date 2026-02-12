@@ -4,11 +4,12 @@ A simple personal portfolio site I built to showcase my work. Nothing fancy — 
 
 ## What's Here
 
-- **Dark & light mode** — toggle switch in the header, your preference sticks around
-- **Responsive layout** — works on phones, tablets, desktops
-- **Project image sliders** — auto-rotating screenshots for each project
-- **Contact form** — ready to wire up to a backend
-- **Mobile menu** — hamburger that actually closes when you tap a link
+- Dark & light mode : toggle switch in the header, your preference sticks around
+- Responsive layout : works on phones, tablets, desktops
+- Project image sliders : auto-rotating screenshots for each project
+- Contact form : ready to wire up to a backend
+- Mobile menu : hamburger that actually closes when you tap a link
+- Resume download from backend
 
 ## File Structure
 

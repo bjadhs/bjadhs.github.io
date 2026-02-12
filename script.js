@@ -98,8 +98,14 @@ const scrollFunctions = () => {
 
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
-      e.preventDefault();
       const targetId = this.getAttribute('href');
+      
+      // Skip if it's a download link or external URL
+      if (this.hasAttribute('download') || !targetId.startsWith('#')) {
+        return;
+      }
+      
+      e.preventDefault();
       
       if (targetId === '#') {
         window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -144,9 +150,17 @@ const contactForm = () => {
                   window.location.hostname === '127.0.0.1' ||
                   window.location.protocol === 'file:';
 
-  const API_URL = isLocal 
-    ? 'http://localhost:3000/api/contact'
-    : 'https://backend-portfolio-ivory-one.vercel.app/api/contact';
+  const API_BASE_URL = isLocal 
+    ? 'http://localhost:3008'
+    : 'https://backend-portfolio-ivory-one.vercel.app';
+  
+  const API_URL = `${API_BASE_URL}/api/contact`;
+  
+  // Update resume download link
+  const resumeLink = document.querySelector('a[download]');
+  if (resumeLink) {
+    resumeLink.href = `${API_BASE_URL}/api/resume`;
+  }
 
   // Real-time validation
   const validateField = (input) => {
