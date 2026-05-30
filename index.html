@@ -21,6 +21,14 @@
 </head>
 
 <body>
+  <noscript>
+    <div style="padding: 1rem; text-align: center; background: #ffe; color: #333;">
+      This site works best with JavaScript enabled. The contact form and theme toggle require it —
+      meanwhile you can reach me directly at
+      <a href="mailto:bijayadhikari107@gmail.com">bijayadhikari107@gmail.com</a>.
+    </div>
+  </noscript>
+
   <!-- Header -->
   <header>
     <div class="container">
@@ -31,10 +39,12 @@
           <li><a href="#skills">Skills</a></li>
           <li><a href="#projects">Projects</a></li>
           <li><a href="#contact">Contact</a></li>
-          <label class="theme-switch">
-            <input type="checkbox" id="theme-toggle">
-            <span class="slider"></span>
-          </label>
+          <li>
+            <label class="theme-switch">
+              <input type="checkbox" id="theme-toggle">
+              <span class="slider"></span>
+            </label>
+          </li>
         </ul>
         <div class="burger">
           <div class="line1"></div>
@@ -47,12 +57,43 @@
 
   <!-- Hero Section -->
   <section class="hero">
+    <div class="hero-bg-icons" aria-hidden="true">
+      <i class="fab fa-react hero-icon" style="--ix:8%;--iy:18%;--is:3rem;--id:20s;--idl:-4s"></i>
+      <i class="fab fa-node-js hero-icon" style="--ix:85%;--iy:22%;--is:2.5rem;--id:25s;--idl:-10s"></i>
+      <i class="fab fa-python hero-icon" style="--ix:12%;--iy:72%;--is:2.2rem;--id:18s;--idl:-7s"></i>
+      <i class="fab fa-docker hero-icon" style="--ix:80%;--iy:65%;--is:3rem;--id:22s;--idl:-2s"></i>
+      <i class="fab fa-aws hero-icon" style="--ix:91%;--iy:42%;--is:2rem;--id:28s;--idl:-15s"></i>
+      <i class="fab fa-js hero-icon" style="--ix:4%;--iy:48%;--is:2.5rem;--id:16s;--idl:-8s"></i>
+      <i class="fab fa-git-alt hero-icon" style="--ix:72%;--iy:82%;--is:2rem;--id:24s;--idl:-5s"></i>
+      <i class="fab fa-html5 hero-icon" style="--ix:42%;--iy:6%;--is:1.8rem;--id:19s;--idl:-12s"></i>
+      <i class="fab fa-github hero-icon" style="--ix:56%;--iy:88%;--is:2.8rem;--id:21s;--idl:-1s"></i>
+      <i class="fab fa-linux hero-icon" style="--ix:26%;--iy:28%;--is:2rem;--id:26s;--idl:-9s"></i>
+      <i class="fas fa-database hero-icon" style="--ix:93%;--iy:12%;--is:1.6rem;--id:17s;--idl:-6s"></i>
+      <i class="fab fa-css3-alt hero-icon" style="--ix:2%;--iy:85%;--is:2rem;--id:23s;--idl:-13s"></i>
+      <i class="fas fa-terminal hero-icon" style="--ix:63%;--iy:10%;--is:1.8rem;--id:29s;--idl:-3s"></i>
+      <i class="fab fa-npm hero-icon" style="--ix:36%;--iy:80%;--is:1.5rem;--id:20s;--idl:-11s"></i>
+    </div>
+    <div class="hero-badge">
+      <span class="badge-dot"></span>
+      Open to Work
+    </div>
     <div class="container">
-      <div class="hero-content">
-        <h1>Hi, I'm <span style="color: var(--accent);">Bijaya Adhikari</span></h1>
-        <p>I am a self-taught Full-Stack Developer passionate about creating elegant, efficient, and user-friendly mobile and web applications using React, Node.js, TypeScript, Python, MongoDB, PostgreSQL, AWS, Docker, and Agentic AI technologies.</p>
-        <a href="https://backend-portfolio-ivory-one.vercel.app/api/resume" class="btn" download><i class="fas fa-download"></i> Resume</a>
-        <a href="#projects" class="btn btn-outline">View My Work</a>
+      <div class="hero-inner">
+        <div class="hero-content">
+          <p class="hero-greeting">Hi, I'm</p>
+          <h1>Bijaya Adhikari</h1>
+          <p class="hero-role">Full-Stack Developer <span class="role-sep">·</span> AI Engineer</p>
+          <p class="hero-desc">I build production-grade web apps and agentic AI systems — from React frontends and Node.js APIs to LangChain-powered RAG pipelines and cloud deployments on AWS.</p>
+          <div class="hero-buttons">
+            <a href="https://backend-portfolio-ivory-one.vercel.app/api/resume" class="btn" download><i class="fas fa-download"></i> Resume</a>
+            <a href="#projects" class="btn btn-outline">View My Work</a>
+          </div>
+        </div>
+        <div class="hero-image">
+          <div class="hero-image-wrapper">
+            <img src="./images/bijaya.png" alt="Bijaya Adhikari">
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -63,15 +104,14 @@
       <h2 class="section-title">About Me</h2>
       <div class="about-content">
         <div class="about-text-top">
-          <p>Leveraging my Master's degree in Information Technology from Charles Sturt University, I've spent the past year building production applications including a full-stack ecommerce platform with authentication and admin dashboard. I'm actively developing agentic AI systems using LangChain and RAG pipelines with vector databases, integrating LLM capabilities into modern web applications. View my work at github.com/bjadhs .</p>   
-         </div>
-        <div class="about-image">
-          <div class="image-wrapper">
-            <img src="./images/bijaya.png" alt="Bijaya Adhikari">
-          </div>
+          <div class="about-card-icon"><i class="fas fa-laptop-code"></i></div>
+          <h4 class="about-card-label">Education &amp; Projects</h4>
+          <p>Leveraging my Master's degree in Information Technology from Charles Sturt University, I've spent the past year building production applications including a full-stack ecommerce platform with authentication and admin dashboard. I'm actively developing agentic AI systems using LangChain and RAG pipelines with vector databases, integrating LLM capabilities into modern web applications. View my work at github.com/bjadhs.</p>
         </div>
         <div class="about-text-bottom">
-          <p>I approach development with a DevOps mindset—implementing CI/CD pipelines, Docker containerization, and cloud infrastructure on AWS (EC2, S3, Lambda) while working efficiently in Linux environments. My technical toolkit includes Git workflows, performance optimization, debugging complex systems, and Agile delivery practices. Currently, I'm building Agentic AI and RAG systems using LangChain and vector databases, integrating LLM capabilities into modern applications. Combining strong CS fundamentals (data structures, algorithms, system design) with UI/UX design thinking and exceptional communication skills, I deliver clean, maintainable code that solves real problems and drives measurable impact.</p>
+          <div class="about-card-icon"><i class="fas fa-server"></i></div>
+          <h4 class="about-card-label">Engineering &amp; Mindset</h4>
+          <p>I approach development with a DevOps mindset—implementing CI/CD pipelines, Docker containerization, and cloud infrastructure on AWS (EC2, S3, Lambda) while working efficiently in Linux environments. My technical toolkit includes Git workflows, performance optimization, debugging complex systems, and Agile delivery practices. Currently building Agentic AI and RAG systems using LangChain and vector databases, integrating LLM capabilities into modern applications. Combining strong CS fundamentals with UI/UX design thinking and exceptional communication skills, I deliver clean, maintainable code that solves real problems and drives measurable impact.</p>
         </div>
       </div>
     </div>
@@ -248,7 +288,7 @@
   <!-- Footer -->
   <footer>
     <div class="container">
-      <p>&copy; 2025 Bijaya Adhikari. All Rights Reserved.</p>
+      <p>&copy; <span id="year">2026</span> Bijaya Adhikari. All Rights Reserved.</p>
     </div>
   </footer>
 
