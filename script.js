@@ -343,17 +343,25 @@ const initScrollAnimations = () => {
 
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        if (entry.target.classList.contains('about-text-top')) {
-          entry.target.classList.add('animate-fade-in-up');
-        } else if (entry.target.classList.contains('about-text-bottom')) {
-          setTimeout(() => entry.target.classList.add('animate-fade-in-up'), 200);
-        } else if (entry.target.classList.contains('about-image')) {
+      if (entry.target.classList.contains('about-sentence')) {
+        const sentences = document.querySelectorAll('.about-sentence');
+        const index = Array.from(sentences).indexOf(entry.target);
+        if (entry.isIntersecting) {
+          setTimeout(() => entry.target.classList.add('animate-in'), index * 250);
+        } else {
+          entry.target.classList.remove('animate-in');
+        }
+      } else if (entry.isIntersecting) {
+        if (entry.target.classList.contains('about-image')) {
           entry.target.classList.add('animate-fade-in');
         } else if (entry.target.classList.contains('contact-info')) {
           entry.target.classList.add('animate-fade-in-left');
         } else if (entry.target.classList.contains('contact-form')) {
           entry.target.classList.add('animate-fade-in-right');
+        } else if (entry.target.classList.contains('skill-category-card')) {
+          const cards = document.querySelectorAll('.skill-category-card');
+          const cardIndex = Array.from(cards).indexOf(entry.target);
+          setTimeout(() => entry.target.classList.add('animate-in'), cardIndex * 100);
         }
         observer.unobserve(entry.target);
       }
@@ -361,8 +369,8 @@ const initScrollAnimations = () => {
   }, observerOptions);
 
   const elementsToObserve = [
-    '.about-text-top', '.about-text-bottom', '.about-image',
-    '.contact-info', '.contact-form'
+    '.about-sentence', '.about-image',
+    '.contact-info', '.contact-form', '.skill-category-card'
   ];
 
   elementsToObserve.forEach(selector => {
