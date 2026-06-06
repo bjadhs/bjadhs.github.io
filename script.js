@@ -184,13 +184,14 @@ const contactForm = () => {
           errorMessage = 'Name can only contain letters, spaces, hyphens and apostrophes';
         }
         break;
-      case 'email':
+      case 'email': {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailRegex.test(value)) {
           isValid = false;
           errorMessage = 'Please enter a valid email address';
         }
         break;
+      }
       case 'subject':
         if (value.length < 3) {
           isValid = false;
@@ -268,7 +269,7 @@ const contactForm = () => {
         form.reset();
         // Clear any error states
         inputs.forEach(input => input.classList.remove('error'));
-        document.querySelectorAll('.error-message').forEach(el => el.remove());
+        form.querySelectorAll('.error-message').forEach(el => el.remove());
       } else {
         if (data.errors && Array.isArray(data.errors)) {
           // Show field-specific errors
@@ -331,6 +332,8 @@ const initScrollAnimations = () => {
   setTimeout(() => {
     const heroContent = document.querySelector('.hero-content');
     if (heroContent) heroContent.classList.add('animate-fade-in-up');
+    const heroImage = document.querySelector('.hero-image');
+    if (heroImage) heroImage.classList.add('animate-fade-in-right');
   }, 300);
 
   const observerOptions = {
@@ -347,10 +350,6 @@ const initScrollAnimations = () => {
           setTimeout(() => entry.target.classList.add('animate-fade-in-up'), 200);
         } else if (entry.target.classList.contains('about-image')) {
           entry.target.classList.add('animate-fade-in');
-        } else if (entry.target.classList.contains('project-card')) {
-          const cards = document.querySelectorAll('.project-card');
-          const cardIndex = Array.from(cards).indexOf(entry.target);
-          setTimeout(() => entry.target.classList.add('animate-fade-in-up'), cardIndex * 150);
         } else if (entry.target.classList.contains('contact-info')) {
           entry.target.classList.add('animate-fade-in-left');
         } else if (entry.target.classList.contains('contact-form')) {
@@ -363,7 +362,7 @@ const initScrollAnimations = () => {
 
   const elementsToObserve = [
     '.about-text-top', '.about-text-bottom', '.about-image',
-    '.project-card', '.contact-info', '.contact-form'
+    '.contact-info', '.contact-form'
   ];
 
   elementsToObserve.forEach(selector => {
@@ -371,21 +370,106 @@ const initScrollAnimations = () => {
   });
 };
 
+// Render Projects from JSON
+const renderProjects = () => {
+  const grid = document.getElementById('projectsGrid');
+  if (!grid) return;
+
+  try {
+    const projects = typeof projectsData !== 'undefined' ? projectsData : [];
+
+    grid.innerHTML = projects.map(project => {
+      const imagesHtml = project.images
+        .map((src, i) => `<img src="${src}" alt="${project.title}" class="${i === 0 ? 'active' : ''}" loading="lazy">`)
+        .join('');
+
+      const tagsHtml = project.techStack
+        .map(tag => `<span class="tag">${tag}</span>`)
+        .join('');
+
+      const viewBtn = project.projectUrl
+        ? `<a href="${project.projectUrl}" target="_blank" rel="noopener noreferrer" class="btn"><i class="fas fa-external-link-alt"></i> View Project</a>`
+        : '';
+
+      return `
+        <div class="project-card">
+          <div class="project-image">
+            <div class="slider-wrapper">
+              ${imagesHtml}
+            </div>
+          </div>
+          <div class="project-content">
+            <h3>${project.title}</h3>
+            <div class="project-tags">
+              ${tagsHtml}
+            </div>
+            <p>${project.shortDescription}</p>
+            <div class="card-actions">
+              <a href="./project.html?id=${project.id}" class="btn btn-readmore">Read More</a>
+              ${viewBtn}
+            </div>
+          </div>
+        </div>
+      `;
+    }).join('');
+
+    // Re-init sliders after DOM update
+    initProjectSliders();
+
+    // Re-observe newly created cards for scroll animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const cards = document.querySelectorAll('.project-card');
+          const cardIndex = Array.from(cards).indexOf(entry.target);
+          setTimeout(() => entry.target.classList.add('animate-fade-in-up'), cardIndex * 150);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.project-card').forEach(el => observer.observe(el));
+
+  } catch (error) {
+    console.error('Failed to load projects:', error);
+    grid.innerHTML = '<p style="text-align:center;grid-column:1/-1;">Unable to load projects. Please check that projects.js is loaded before script.js.</p>';
+  }
+};
+
 // Project Image Slider
 const initProjectSliders = () => {
-  const sliders = document.querySelectorAll('.slider-wrapper');
+  const sliders = [...document.querySelectorAll('.slider-wrapper')]
+    .map(slider => ({ slider, images: slider.querySelectorAll('img'), currentIndex: 0 }))
+    .filter(s => s.images.length > 1);
 
-  sliders.forEach(slider => {
-    const images = slider.querySelectorAll('img');
-    if (images.length <= 1) return;
+  if (!sliders.length) return;
 
-    let currentIndex = 0;
-    setInterval(() => {
-      images[currentIndex].classList.remove('active');
-      currentIndex = (currentIndex + 1) % images.length;
-      images[currentIndex].classList.add('active');
-    }, 3000);
+  let intervalIds = [];
+
+  const start = () => {
+    if (intervalIds.length) return;
+    intervalIds = sliders.map(s => setInterval(() => {
+      s.images[s.currentIndex].classList.remove('active');
+      s.currentIndex = (s.currentIndex + 1) % s.images.length;
+      s.images[s.currentIndex].classList.add('active');
+    }, 3000));
+  };
+
+  const stop = () => {
+    intervalIds.forEach(clearInterval);
+    intervalIds = [];
+  };
+
+  // Pause sliders when the tab is hidden to avoid needless timers
+  document.addEventListener('visibilitychange', () => {
+    document.hidden ? stop() : start();
   });
+
+  start();
 };
 
 // Initialize
@@ -396,5 +480,8 @@ document.addEventListener('DOMContentLoaded', () => {
   contactForm();
   themeToggle();
   initScrollAnimations();
-  initProjectSliders();
+  renderProjects();
+
+  const yearEl = document.getElementById('year');
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
 });

@@ -1,0 +1,58 @@
+const projectsData = [
+  {
+    "id": "ember-on-toorak",
+    "title": "Ember on Toorak",
+    "shortDescription": "A full-stack luxury restaurant platform with scroll-driven animations, dynamic menu, real-time reservations, and an AI-powered chat concierge backed by a role-protected admin dashboard.",
+    "fullDescription": "Ember on Toorak is a full-stack luxury restaurant platform built for an upscale fire-driven steakhouse in Melbourne. The site delivers a cinematic brand experience with scroll-driven animations, a dynamic menu system, real-time reservations, and an AI-powered chat concierge — all backed by a role-protected admin dashboard.\n\nEvery design decision balances visual storytelling with operational utility: guests get an immersive, smooth-scrolling experience while staff manage menus, bookings, and job listings from a single authenticated interface.\n\nThe architecture follows a modern serverless pattern — Next.js 15 App Router handles SSR and API routes, Prisma ORM connects to Neon Postgres over HTTP, and Clerk secures admin access with JWT-based role enforcement. I implemented transactional email flows via SendGrid, built an AI chat widget using the Vercel AI SDK with OpenAI tool calling, and designed a multi-theme CSS system with runtime switching. Security was treated as a first-class concern: CSP headers, HSTS in production, and strict middleware gating on all admin endpoints.",
+    "techStack": ["Next.js 15", "React 19", "TypeScript", "Tailwind CSS v4", "Neon Postgres", "Prisma ORM", "Clerk", "Framer Motion", "Lenis", "Vercel AI SDK", "OpenAI API", "SendGrid", "React Email", "Zod", "Zustand"],
+    "images": [
+      "./images/emberontoorak/home_main_theme.png",
+      "./images/emberontoorak/menu_green.png",
+      "./images/emberontoorak/booking_pink.png",
+      "./images/emberontoorak/chat_brown.png",
+      "./images/emberontoorak/reservation_brown.png",
+      "./images/emberontoorak/reservation_light.png"
+    ],
+    "projectUrl": "https://emberontoorak.vercel.app/",
+    "githubUrl": null
+  },
+  {
+    "id": "ecommerce-platform",
+    "title": "E-commerce Platform",
+    "shortDescription": "A full-featured e-commerce platform with user authentication, product management, cart functionality, and an admin dashboard.",
+    "fullDescription": "A production-grade e-commerce platform built from the ground up with a React frontend and Node.js backend. Features include user authentication with Clerk, product catalog with search and filtering, shopping cart with persistent state, order management, and a comprehensive admin dashboard for inventory control.\n\nThe platform supports real-time inventory updates, responsive design for all devices, and a clean UI built with Tailwind CSS. The admin dashboard provides analytics, product CRUD operations, and order fulfillment workflows.",
+    "techStack": ["React", "Node.js", "MongoDB", "Clerk"],
+    "images": [
+      "./images/ecom/ecom1.png",
+      "./images/ecom/ecom2.png"
+    ],
+    "projectUrl": "https://ecomm-5xbtn.sevalla.app/",
+    "githubUrl": null
+  },
+  {
+    "id": "memory-game",
+    "title": "Memory Game",
+    "shortDescription": "A simple interactive memory game built with React and styled with Tailwind CSS.",
+    "fullDescription": "A classic memory matching card game built using React and Tailwind CSS. Players flip cards to find matching pairs, with a timer and move counter to track performance. The game features smooth card flip animations, responsive layout, and difficulty levels that adjust the grid size.\n\nBuilt as a learning project to practice React state management, component composition, and Tailwind utility-first styling.",
+    "techStack": ["React", "Tailwind CSS"],
+    "images": [
+      "./images/nodejs.svg",
+      "./images/nodejs.svg"
+    ],
+    "projectUrl": null,
+    "githubUrl": null
+  },
+  {
+    "id": "movie-trending-app",
+    "title": "Movie Trending App",
+    "shortDescription": "A movie discovery app that shows trending films with search functionality and detailed movie info.",
+    "fullDescription": "A movie browsing application that fetches real-time trending movie data from a public API. Users can search for movies, view detailed information including ratings, cast, and plot summaries, and browse by trending categories.\n\nThe app features a responsive grid layout, smooth hover effects on movie cards, and a clean dark-themed UI built with Tailwind CSS. It demonstrates proficiency in working with external APIs, React hooks for data fetching, and responsive design patterns.",
+    "techStack": ["React", "Tailwind CSS"],
+    "images": [
+      "./images/nodejs.svg",
+      "./images/nodejs.svg"
+    ],
+    "projectUrl": null,
+    "githubUrl": null
+  }
+];

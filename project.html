@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project Details | Bijaya Adhikari</title>
+  <meta name="description" content="Detailed view of a portfolio project by Bijaya Adhikari.">
+  <link rel="icon" type="image/png" href="./images/bj.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <nav>
+        <a href="./index.html#projects" class="logo"><span>BJ</span></a>
+        <ul class="nav-links">
+          <li><a href="./index.html#about">About</a></li>
+          <li><a href="./index.html#skills">Skills</a></li>
+          <li><a href="./index.html#projects">Projects</a></li>
+          <li><a href="./index.html#contact">Contact</a></li>
+          <li>
+            <label class="theme-switch">
+              <input type="checkbox" id="theme-toggle">
+              <span class="slider"></span>
+            </label>
+          </li>
+        </ul>
+        <div class="burger">
+          <div class="line1"></div>
+          <div class="line2"></div>
+          <div class="line3"></div>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Project Detail -->
+  <section class="project-detail">
+    <div class="container">
+      <a href="./index.html#projects" class="back-link"><i class="fas fa-arrow-left"></i> Back to Projects</a>
+
+      <div id="projectContent">
+        <!-- Populated by project.js -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>&copy; <span id="year">2026</span> Bijaya Adhikari. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <a href="#" class="back-to-top" id="backToTop">&uarr;</a>
+
+  <script src="./projects.js"></script>
+  <script src="./project.js"></script>
+</body>
+
+</html>

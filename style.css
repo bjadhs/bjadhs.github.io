@@ -721,11 +721,13 @@ body.dark-theme .skill-tag:hover {
 }
 
 .tag {
-  background-color: #f1f1f1;
-  padding: 0.3rem 0.8rem;
+  background-color: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  padding: 0.1rem 0.45rem;
   border-radius: 50px;
-  font-size: 0.8rem;
-  color: #666;
+  font-size: 0.5rem;
+  font-weight: 500;
+  color: #ffffff;
 }
 
 /* Contact Section */
@@ -1362,4 +1364,203 @@ input:checked + .slider {
 input:checked + .slider:before {
   transform: translateY(-50%) translateX(28px);
   background-color: #1e293b;
+}
+
+/* ===== Card Action Buttons ===== */
+.card-actions {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.card-actions .btn {
+  padding: 0.55rem 1.25rem;
+  font-size: 0.82rem;
+  flex: 1 1 auto;
+  text-align: center;
+}
+
+.card-actions .btn-readmore {
+  background-color: var(--primary);
+}
+
+.card-actions .btn-readmore:hover {
+  background-color: var(--accent);
+}
+
+.card-actions .btn-outline {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.card-actions .btn-outline:hover {
+  background-color: var(--accent);
+  color: white;
+  border-color: transparent;
+}
+
+/* ===== Project Detail Page ===== */
+.project-detail {
+  padding: 6rem 0 3rem;
+  min-height: 100vh;
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.9rem;
+  margin-bottom: 1.5rem;
+  transition: color 0.3s ease;
+}
+
+.back-link:hover {
+  color: var(--primary);
+}
+
+.back-link i {
+  font-size: 0.8rem;
+}
+
+.detail-hero-image {
+  width: 100%;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+  margin-bottom: 2rem;
+  border: 1px solid var(--border-color);
+}
+
+.detail-hero-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+.detail-content h1 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: var(--primary);
+}
+
+.detail-tags {
+  margin-bottom: 1.5rem;
+}
+
+.detail-tags .tag {
+  background-color: var(--bg);
+  border: 1px solid var(--border-color);
+  color: var(--text);
+  font-weight: 500;
+}
+
+body.dark-theme .detail-tags .tag {
+  background-color: rgba(30, 41, 59, 0.8);
+  color: var(--text);
+}
+
+.detail-description {
+  max-width: 800px;
+  margin-bottom: 2rem;
+}
+
+.detail-description p {
+  font-size: 0.95rem;
+  line-height: 1.8;
+  color: var(--text);
+  opacity: 0.85;
+  margin-bottom: 1.2rem;
+  font-style: normal;
+}
+
+.detail-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+}
+
+.detail-gallery img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: block;
+}
+
+.detail-gallery img:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+}
+
+.detail-actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  align-items: center;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border-color);
+  margin-bottom: 2rem;
+}
+
+.detail-actions .btn i {
+  margin-right: 0.4rem;
+  font-size: 0.85rem;
+}
+
+.detail-not-found {
+  text-align: center;
+  padding: 4rem 1rem;
+}
+
+.detail-not-found h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: var(--text);
+}
+
+.detail-not-found p {
+  color: var(--text);
+  opacity: 0.7;
+  margin-bottom: 1.5rem;
+}
+
+/* Detail page responsive */
+@media screen and (max-width: 768px) {
+  .project-detail {
+    padding: 5rem 0 2rem;
+  }
+
+  .detail-content h1 {
+    font-size: 1.7rem;
+  }
+
+  .detail-gallery {
+    grid-template-columns: 1fr;
+  }
+
+  .detail-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .detail-actions .btn {
+    text-align: center;
+  }
+
+  .card-actions .btn {
+    flex: 1 1 100%;
+  }
 }
