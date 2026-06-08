@@ -47,5 +47,19 @@ const projectsData = [
     ],
     "projectUrl": "https://ecomm-5xbtn.sevalla.app/",
     "githubUrl": null
+  },
+  {
+    "id": "memory-game",
+    "title": "Memory Game",
+    "shortDescription": "A fun memory card game built with React and Tailwind CSS. Test your memory by matching pairs of fruits!",
+    "fullDescription": "A fun little memory card game built with React and TailwindCSS. Players test their memory by matching pairs of fruit-themed cards.\n\nFeatures include score tracking for moves and matches, smooth card flip animations with a win celebration, responsive desktop and mobile design, and auto-shuffle for fresh game layouts on every new round.",
+    "techStack": ["React", "Tailwind CSS", "Vite"],
+    "images": [
+      "./images/memory_game/game.jpg",
+      "./images/memory_game/game1.jpg",
+      "./images/memory_game/game2.jpg"
+    ],
+    "projectUrl": "https://memory-game-tau-virid.vercel.app/",
+    "githubUrl": "https://github.com/bjadhs/memory_game"
   }
 ];
