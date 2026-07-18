@@ -4,8 +4,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Project Details | Bijaya Adhikari</title>
-  <meta name="description" content="Detailed view of a portfolio project by Bijaya Adhikari.">
+  <title>Blog | Bijaya Adhikari</title>
+  <meta name="description" content="An article from Bijaya Adhikari's blog.">
   <link rel="icon" type="image/png" href="./images/bj.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,12 +18,12 @@
   <header class="site-header">
     <div class="container">
       <nav>
-        <a href="./index.html#projects" class="logo"><span>BJ</span></a>
+        <a href="./index.html" class="logo"><span>BJ</span></a>
         <ul class="nav-links">
           <li><a href="./index.html#about">About</a></li>
           <li><a href="./index.html#skills">Skills</a></li>
           <li><a href="./index.html#projects">Projects</a></li>
-          <li><a href="./blog.html">Blog</a></li>
+          <li><a href="./blog.html" class="active">Blog</a></li>
           <li><a href="./index.html#contact">Contact</a></li>
           <li>
             <label class="theme-switch">
@@ -41,14 +41,14 @@
     </div>
   </header>
 
-  <!-- Project Detail -->
-  <section class="project-detail">
-    <div class="container">
-      <a href="./index.html#projects" class="back-link"><i class="fas fa-arrow-left"></i> Back to Projects</a>
+  <!-- Post -->
+  <section class="post-detail">
+    <div class="container container-narrow">
+      <a href="./blog.html" class="back-link"><i class="fas fa-arrow-left"></i> Back to Blog</a>
 
-      <div id="projectContent">
-        <!-- Populated by project.js -->
-      </div>
+      <article id="postContent">
+        <!-- Populated by post.js -->
+      </article>
     </div>
   </section>
 
@@ -61,8 +61,8 @@
 
   <a href="#" class="back-to-top" id="backToTop">&uarr;</a>
 
-  <script src="./projects.js"></script>
-  <script src="./project.js"></script>
+  <script src="./blog-posts.js"></script>
+  <script src="./post.js"></script>
 </body>
 
 </html>

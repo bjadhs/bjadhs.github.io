@@ -83,7 +83,7 @@ const navSlide = () => {
 
 // Scroll Functions
 const scrollFunctions = () => {
-  const header = document.querySelector('header');
+  const header = document.querySelector('.site-header');
   const backToTop = document.getElementById('backToTop');
 
   window.addEventListener('scroll', () => {
