@@ -391,9 +391,13 @@ const renderProjects = () => {
         .map((src, i) => `<img src="${src}" alt="${project.title}" class="${i === 0 ? 'active' : ''}" loading="lazy">`)
         .join('');
 
-      const tagsHtml = project.techStack
+      // Cap the card's tags to one row — the rest are on the detail page.
+      const MAX_TAGS = 4;
+      const shownTags = project.techStack.slice(0, MAX_TAGS);
+      const hiddenCount = project.techStack.length - shownTags.length;
+      const tagsHtml = shownTags
         .map(tag => `<span class="tag">${tag}</span>`)
-        .join('');
+        .join('') + (hiddenCount > 0 ? `<span class="tag tag-more">+${hiddenCount}</span>` : '');
 
       const viewBtn = project.projectUrl
         ? `<a href="${project.projectUrl}" target="_blank" rel="noopener noreferrer" class="btn"><i class="fas fa-external-link-alt"></i> View Project</a>`
