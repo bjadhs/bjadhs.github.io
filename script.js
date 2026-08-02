@@ -150,9 +150,9 @@ const contactForm = () => {
                   window.location.hostname === '127.0.0.1' ||
                   window.location.protocol === 'file:';
 
-  const API_BASE_URL = isLocal 
+  const API_BASE_URL = isLocal
     ? 'http://localhost:3008'
-    : 'https://backend-portfolio-ivory-one.vercel.app';
+    : 'https://backend.bijbrin.cloud';
   
   const API_URL = `${API_BASE_URL}/api/contact`;
   
