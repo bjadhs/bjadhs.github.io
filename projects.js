@@ -45,7 +45,7 @@ const projectsData = [
       "./images/ecom/ecom1.webp",
       "./images/ecom/ecom2.webp"
     ],
-    "projectUrl": "https://ecomm-5xbtn.sevalla.app/",
+    "projectUrl": "https://ecom.bijbrin.cloud",
     "githubUrl": null
   },
   {

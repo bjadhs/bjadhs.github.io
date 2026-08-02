@@ -19,7 +19,7 @@ Live at [bjadhs.github.io](https://bjadhs.github.io)
 |---------|----------|
 | Ember on Toorak | [emberontoorak.vercel.app](https://emberontoorak.vercel.app/) |
 | Hiday | [hiday-one.vercel.app](https://hiday-one.vercel.app/) |
-| E-commerce Platform | [ecomm-5xbtn.sevalla.app](https://ecomm-5xbtn.sevalla.app/) |
+| E-commerce Platform | [ecom.bijbrin.cloud](https://ecom.bijbrin.cloud) |
 | Memory Game | [memory-game-tau-virid.vercel.app](https://memory-game-tau-virid.vercel.app/) |
 
 ## Stack
